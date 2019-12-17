@@ -1,0 +1,59 @@
+{
+  "name": "chat-backend",
+  "version": "1.0.0",
+  "description": "chat-backend",
+  "main": "app/server.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "node --inspect=5858 -r ts-node/register ./app/app.ts",
+    "prod": "tsc && node ./build/app.js",
+    "watch": "nodemon -r tsconfig-paths/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elmanderrr/chat-backend.git"
+  },
+  "keywords": [
+    "chat",
+    "ts",
+    "backend",
+    "node"
+  ],
+  "author": "a.korolev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elmanderrr/chat-backend/issues"
+  },
+  "homepage": "https://github.com/Elmanderrr/chat-backend#readme",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.2",
+    "@types/jwt-simple": "^0.5.33",
+    "@types/mongoose": "^5.5.34",
+    "@types/passport": "^1.0.2",
+    "@types/passport-jwt": "^3.0.3",
+    "@types/superagent": "^4.1.4",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.0",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.1",
+    "ntypescript": "1.201706190042.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^2.2.1",
+    "ts-node-dev": "^1.0.0-pre.44"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.17",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.19.1",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.5.4",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.3"
+  }
+}
