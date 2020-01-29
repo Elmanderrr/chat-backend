@@ -1,24 +1,27 @@
 import * as mongoose from "mongoose";
-const modelName = 'User';
+import { DialogSchema, IDialog } from 'app/models/dialog.model';
+import { AbstractModel } from 'app/interfaces/abstract-model.interface';
+import { SchemaTimestampsConfig } from "mongoose";
 
-export interface IUser extends mongoose.Document{
+export interface IUser extends SchemaTimestampsConfig {
   name: string
+  email: string;
+  dialogs?: Array<IDialog>;
+  isLogged?: boolean;
 }
 
-export interface IUserModel extends IUser, Document {
-  getAll(): Promise<Array<IUserModel>>;
-}
+export interface IUserModel extends IUser, mongoose.Document {}
 
 export const UserSchema = new mongoose.Schema({
-  name: { type: String, required: true }
-});
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  isLogged: { type: Boolean, required: false, default: false },
+  dialogs: [DialogSchema]
+}, { timestamps: true });
 
-class Test extends mongoose.Model {
-
+class UsersModel extends AbstractModel {
+  public name = 'User';
+  public model: mongoose.Model<IUserModel> = mongoose.model<IUserModel>(this.name, UserSchema);
 }
 
-UserSchema.loadClass(Test);
-
-const User: mongoose.Model<IUserModel> = mongoose.model<IUserModel>(modelName, UserSchema);
-
-export { User, Test }
+export const usersModel = new UsersModel();
